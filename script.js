@@ -30,3 +30,12 @@ const data = (arrayData) => {
   //   console.log(newarray);
   return newarray;
 };
+
+// funcion random
+
+const funcionrandom = funcionrandom;
+
+function randomGeneretor(numeroMax) {
+  return Math.floor(Math.random() * (numeroMax + 1));
+}
+
