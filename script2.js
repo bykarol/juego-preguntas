@@ -6,12 +6,8 @@ async function getData() {
     const respuesta = await fetch(url);
     const datosRespuesta = await respuesta.json();
     // console.log(datosRespuesta);
-    // data(datosRespuesta);
-    let newarray = [];
-    for (const pregunta of datosRespuesta) {
-      newarray.push(pregunta);
-    }
-    console.log(newarray);
+    data(datosRespuesta);
+    return datosRespuesta;
   } catch (error) {
     console.error("Error en la llamada a los datos", error.message);
   }
@@ -23,17 +19,14 @@ window.addEventListener("load", getData);
 // Esta función debe recorrer el array recibido y copiarlo en un nuevo array.
 // Esta función no retorna ningún valor
 
-// const data = (arrayData) => {
-//   let newarray = [];
+const data = (arrayData) => {
+  let newarray = [];
 
-//   for (const pregunta of arrayData) {
-//     newarray.push(pregunta);
-//   }
-//   console.log(newarray);
-// };
-// data();
+  for (const pregunta of arrayData) {
+    newarray.push(pregunta);
+  }
 
-// for (const pregunta of arrayData) {
-//   newarray.push(pregunta);
-// }
-// console.log(newarray);
+  //   console.log(typeof arrayData);
+  //   console.log(newarray);
+  return newarray;
+};
