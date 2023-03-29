@@ -8,3 +8,17 @@ main {
   margin: 0 auto;
   margin-top: 2%;
 }
+
+.correcta,
+.erronea {
+  padding: 5px;
+  color: white;
+}
+
+.correcta {
+  background-color: green;
+}
+
+.erronea {
+  background-color: red;
+}

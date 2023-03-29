@@ -39,37 +39,80 @@ const state = {
   headerElemento: document.querySelector("#j-header"),
   mainElemento: document.querySelector("#j-main"),
   index: 0,
-  totalPreguntas: 15,
   arrayPreguntas: [],
   puntos: 0,
-
+  resultadoRespuesta: undefined,
+  setUp() {
+    this.mainElemento.innerHTML = "";
+    const setUpFragment = document.createDocumentFragment();
+    const pElement = document.createElement("p");
+    pElement.textContent = state.arrayPreguntas[this.index].question;
+    const puntosElement = document.createElement("p");
+    puntosElement.textContent = `Puntaje: ${this.puntos}`;
+    const ulElement = document.createElement("ul");
+    for (let j = 0; j < this.arrayPreguntas[this.index].answers.length; j++) {
+      const liElement = document.createElement("li");
+      liElement.textContent = this.arrayPreguntas[this.index].answers[j];
+      ulElement.append(liElement);
+    }
+    setUpFragment.append(pElement);
+    setUpFragment.append(ulElement);
+    setUpFragment.append(puntosElement);
+    if (this.resultadoRespuesta !== undefined) {
+      setUpFragment.append(this.resultadoRespuesta);
+    }
+    this.mainElemento.append(setUpFragment);
+    ulElement.addEventListener("click", corregirRespuesta);
+  },
 }
-const start = () => {
-  state.puntos = 0;
-  mezclar();
-  setUp();
-}
-
-
- const setUp = ()=>{
-  const pElement = document.createElement("p")
-  const ulElement = document.createElement("ul")
-  const setUpFragment = document.createDocumentFragment();
-  
-  pElement.textContent = state.arrayPreguntas[state.index].question;
-  setUpFragment.append(pElement)
-  for (let j = 0; j < state.arrayPreguntas[state.index].answers.length; j++) {
-    const liElement = document.createElement("li")
-    liElement.textContent = state.arrayPreguntas[state.index].answers[j]
-    ulElement.append(liElement)
-    setUpFragment.append(ulElement)
-    
+const corregirRespuesta = (evento) => {
+  const respuestaUsuario = evento.target.textContent;
+  let pResultado = document.createElement("p");
+  if (state.index < state.arrayPreguntas.length) {
+    if (respuestaUsuario === state.arrayPreguntas[state.index].correct) {
+      console.log("Respuesta correcta");
+      pResultado.classList.add("correcta");
+      pResultado.textContent = `(${respuestaUsuario}) - Respuesta correcta!!!`;
+      state.resultadoRespuesta = pResultado;
+      state.puntos += 1;
+    }
+    else {
+      console.log("Respuesta incorrecta");
+      pResultado.classList.add("erronea");
+      pResultado.textContent = `Respuesta incorrecta!!! La respuesta correcta era (${state.arrayPreguntas[state.index].correct})`;
+      state.resultadoRespuesta = pResultado;
+    }
+    state.index += 1;
+    state.setUp();
   }
-  state.mainElemento.innerHTML = "";
-  state.mainElemento.append(setUpFragment)
+
+
+
 }
+
+const start = () => {
+  mezclar();
+  state.setUp();
+}
+
+
+// const setUp = () => {
+//   const pElement = document.createElement("p")
+//   const ulElement = document.createElement("ul")
+//   const setUpFragment = document.createDocumentFragment();
+
+//   pElement.textContent = state.arrayPreguntas[state.index].question;
+//   setUpFragment.append(pElement)
+//   for (let j = 0; j < state.arrayPreguntas[state.index].answers.length; j++) {
+//     const liElement = document.createElement("li")
+//     liElement.textContent = state.arrayPreguntas[state.index].answers[j]
+//     ulElement.append(liElement)
+//     setUpFragment.append(ulElement)
+
+//   }
+//   state.mainElemento.innerHTML = "";
+//   state.mainElemento.append(setUpFragment)
+// }
 
 window.addEventListener("load", getData);
 state.btnStartElemento.addEventListener("click", start);
-
-
