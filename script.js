@@ -12,30 +12,40 @@ async function getData() {
     console.error("Error en la llamada a los datos", error.message);
   }
 }
-window.addEventListener("load", getData);
-
-// Crear una función llamada data
-// Esta función recibe como argumento un array.
-// Esta función debe recorrer el array recibido y copiarlo en un nuevo array.
-// Esta función no retorna ningún valor
 
 const data = (arrayData) => {
-  let newarray = [];
-
   for (const pregunta of arrayData) {
-    newarray.push(pregunta);
+    state.arrayPreguntas.push(pregunta);
   }
-
-  //   console.log(typeof arrayData);
-  //   console.log(newarray);
-  return newarray;
-};
-
-// funcion random
-
-const funcionrandom = funcionrandom;
-
-function randomGeneretor(numeroMax) {
-  return Math.floor(Math.random() * (numeroMax + 1));
 }
 
+const randomGenerator = (numMax) => {
+  return Math.floor(Math.random() * numMax);
+}
+
+const mezclar = () => {
+  let arrayMezclado = [];
+  while (arrayMezclado.length < 15) {
+    const rdnNum = randomGenerator(state.arrayPreguntas.length);
+    if (!arrayMezclado.includes(state.arrayPreguntas[rdnNum])) {
+      arrayMezclado.push(state.arrayPreguntas[rdnNum]);
+    }
+  }
+  state.arrayPreguntas = arrayMezclado;
+}
+
+const state = {
+  btnStartElemento: document.querySelector("input#btnStart"),
+  totalPreguntas: 15,
+  arrayPreguntas: [],
+
+
+}
+
+const start = () => {
+  mezclar();
+}
+
+
+window.addEventListener("load", getData);
+state.btnStartElemento.addEventListener("click", start);
