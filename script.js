@@ -36,16 +36,40 @@ const mezclar = () => {
 
 const state = {
   btnStartElemento: document.querySelector("input#btnStart"),
+  headerElemento: document.querySelector("#j-header"),
+  mainElemento: document.querySelector("#j-main"),
+  index: 0,
   totalPreguntas: 15,
   arrayPreguntas: [],
-
+  puntos: 0,
 
 }
-
 const start = () => {
+  state.puntos = 0;
   mezclar();
+  setUp();
 }
 
+
+ const setUp = ()=>{
+  const pElement = document.createElement("p")
+  const ulElement = document.createElement("ul")
+  const setUpFragment = document.createDocumentFragment();
+  
+  pElement.textContent = state.arrayPreguntas[state.index].question;
+  setUpFragment.append(pElement)
+  for (let j = 0; j < state.arrayPreguntas[state.index].answers.length; j++) {
+    const liElement = document.createElement("li")
+    liElement.textContent = state.arrayPreguntas[state.index].answers[j]
+    ulElement.append(liElement)
+    setUpFragment.append(ulElement)
+    
+  }
+  state.mainElemento.innerHTML = "";
+  state.mainElemento.append(setUpFragment)
+}
 
 window.addEventListener("load", getData);
 state.btnStartElemento.addEventListener("click", start);
+
+
