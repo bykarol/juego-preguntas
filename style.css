@@ -1,5 +1,5 @@
 main {
-  background-color: rgb(212, 255, 248);
+  background-color: rgb(151, 33, 7);
   padding: 30px;
   border-radius: 25px;
   box-shadow: 0px 0px 10px rgb(81, 166, 164);
@@ -21,4 +21,9 @@ main {
 
 .erronea {
   background-color: red;
+}
+
+.j-header {
+  text-align: center;
+  background-color: brown;
 }
