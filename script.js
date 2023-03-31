@@ -41,7 +41,7 @@ const state = {
   index: 0,
   arrayPreguntas: [],
   puntos: 0,
-  puntajeFinal: [],
+  arrayPuntajes: [],
   resultadoRespuesta: undefined,
   setUp() {
     this.mainElemento.innerHTML = "";
@@ -67,11 +67,12 @@ const state = {
   },
   resetear() {
     this.index = 0;
-    if (state.puntajeFinal.length < 5) {
-      state.puntajeFinal.push(this.puntos);
+    if (state.arrayPuntajes.length < 5) {
+      state.arrayPuntajes.unshift(this.puntos);
     }
     else {
-      state.puntajeFinal.shift();
+      state.arrayPuntajes.shift();
+      state.arrayPuntajes.push(this.puntos);
     }
     this.puntos = 0;
   },
@@ -107,10 +108,20 @@ const finDelJuego = () => {
   const finFragment = document.createDocumentFragment();
   const buttonElement = document.createElement("button");
   const elementPuntos = document.createElement("p");
+  const h3Element = document.createElement("h3");
+  const ulPuntajes = document.createElement("ul");
+  for (let i = 0; i < state.arrayPuntajes.length; i++) {
+    const liPuntaje = document.createElement("li");
+    liPuntaje.textContent = `Partida #${i + 1} - Puntaje final: ${state.arrayPuntajes[i]}`;
+    ulPuntajes.append(liPuntaje);
+  }
   buttonElement.textContent = "Volver a Jugar";
   elementPuntos.textContent = `Puntaje Final: ${state.puntos}`;
-  finFragment.append(buttonElement);
+  h3Element.textContent = "Últimos Puntajes"
   finFragment.append(elementPuntos);
+  finFragment.append(buttonElement);
+  finFragment.append(h3Element);
+  finFragment.append(ulPuntajes);
   state.mainElemento.append(finFragment);
   buttonElement.addEventListener("click", retorno);
 }
