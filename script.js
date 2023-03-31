@@ -67,12 +67,12 @@ const state = {
   },
   resetear() {
     this.index = 0;
-    if (state.arrayPuntajes.length < 5) {
-      state.arrayPuntajes.unshift(this.puntos);
+    if (this.arrayPuntajes.length < 5) {
+      this.arrayPuntajes.unshift(this.puntos);
     }
     else {
-      state.arrayPuntajes.shift();
-      state.arrayPuntajes.push(this.puntos);
+      this.arrayPuntajes.shift();
+      this.arrayPuntajes.push(this.puntos);
     }
     this.puntos = 0;
   },
