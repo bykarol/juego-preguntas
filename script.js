@@ -25,7 +25,7 @@ const randomGenerator = (numMax) => {
 
 const mezclar = () => {
   let arrayMezclado = [];
-  while (arrayMezclado.length < 15) {
+  while (arrayMezclado.length <= 15) {
     const rdnNum = randomGenerator(state.arrayPreguntas.length);
     if (!arrayMezclado.includes(state.arrayPreguntas[rdnNum])) {
       arrayMezclado.push(state.arrayPreguntas[rdnNum]);
@@ -41,6 +41,7 @@ const state = {
   index: 0,
   arrayPreguntas: [],
   puntos: 0,
+  puntajeFinal: [],
   resultadoRespuesta: undefined,
   setUp() {
     this.mainElemento.innerHTML = "";
@@ -64,6 +65,16 @@ const state = {
     this.mainElemento.append(setUpFragment);
     ulElement.addEventListener("click", corregirRespuesta);
   },
+  resetear() {
+    this.index = 0;
+    if (state.puntajeFinal.length < 5) {
+      state.puntajeFinal.push(this.puntos);
+    }
+    else {
+      state.puntajeFinal.shift();
+    }
+    this.puntos = 0;
+  },
 }
 
 const corregirRespuesta = (evento) => {
@@ -85,7 +96,7 @@ const corregirRespuesta = (evento) => {
     }
     state.index += 1;
     state.setUp();
-    if (state.index === 14) {
+    if (state.index === state.arrayPreguntas.length - 1) {
       finDelJuego();
     }
   }
@@ -94,10 +105,10 @@ const corregirRespuesta = (evento) => {
 const finDelJuego = () => {
   state.mainElemento.innerHTML = "";
   const finFragment = document.createDocumentFragment();
-  const buttonElement = document.createElement("Button");
+  const buttonElement = document.createElement("button");
   const elementPuntos = document.createElement("p");
   buttonElement.textContent = "Volver a Jugar";
-  elementPuntos.textContent = `Puntaje Total ${state.puntos}`;
+  elementPuntos.textContent = `Puntaje Final: ${state.puntos}`;
   finFragment.append(buttonElement);
   finFragment.append(elementPuntos);
   state.mainElemento.append(finFragment);
@@ -105,6 +116,8 @@ const finDelJuego = () => {
 }
 
 const retorno = () => {
+  state.resetear();
+  mezclar();
   state.setUp();
 }
 
