@@ -17,11 +17,11 @@ const data = (arrayData) => {
   for (const pregunta of arrayData) {
     state.arrayPreguntas.push(pregunta);
   }
-}
+};
 
 const randomGenerator = (numMax) => {
   return Math.floor(Math.random() * numMax);
-}
+};
 
 const mezclar = () => {
   let arrayMezclado = [];
@@ -32,7 +32,7 @@ const mezclar = () => {
     }
   }
   state.arrayPreguntas = arrayMezclado;
-}
+};
 
 const state = {
   btnStartElemento: document.querySelector("input#btnStart"),
@@ -64,7 +64,7 @@ const state = {
     this.mainElemento.append(setUpFragment);
     ulElement.addEventListener("click", corregirRespuesta);
   },
-}
+};
 const corregirRespuesta = (evento) => {
   const respuestaUsuario = evento.target.textContent;
   let pResultado = document.createElement("p");
@@ -75,26 +75,26 @@ const corregirRespuesta = (evento) => {
       pResultado.textContent = `(${respuestaUsuario}) - Respuesta correcta!!!`;
       state.resultadoRespuesta = pResultado;
       state.puntos += 1;
-    }
-    else {
+    } else {
       console.log("Respuesta incorrecta");
       pResultado.classList.add("erronea");
-      pResultado.textContent = `Respuesta incorrecta!!! La respuesta correcta era (${state.arrayPreguntas[state.index].correct})`;
+      pResultado.textContent = `Respuesta incorrecta!!! La respuesta correcta era (${
+        state.arrayPreguntas[state.index].correct
+      })`;
       state.resultadoRespuesta = pResultado;
     }
     state.index += 1;
     state.setUp();
+    if (state.index === 14) {
+      finDelJuego();
+    }
   }
-
-
-
-}
+};
 
 const start = () => {
   mezclar();
   state.setUp();
-}
-
+};
 
 // const setUp = () => {
 //   const pElement = document.createElement("p")
@@ -116,3 +116,24 @@ const start = () => {
 
 window.addEventListener("load", getData);
 state.btnStartElemento.addEventListener("click", start);
+
+const finDelJuego = () => {
+  state.mainElemento.innerHTML = "";
+  const finFragment = document.createDocumentFragment();
+  const buttonElement = document.createElement("Button");
+  const elementPuntos = document.createElement("p");
+  buttonElement.textContent = "Volver a Jugar";
+  elementPuntos.textContent = `Puntaje Total ${state.puntos}`;
+  finFragment.append(buttonElement);
+  finFragment.append(elementPuntos);
+  state.mainElemento.append(finFragment);
+  buttonElement.addEventListener("click",retorno);
+};
+
+const retorno = () => {
+state.setUp();
+
+
+
+
+}
