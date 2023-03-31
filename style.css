@@ -1,12 +1,18 @@
-main {
+* {
+  font-family: Verdana, Helvetica;
   background-color: rgb(212, 255, 248);
-  padding: 30px;
+}
+
+main {
+  background-color: rgb(81, 166, 164);
+  padding: 80px;
   border-radius: 25px;
-  box-shadow: 0px 0px 10px rgb(81, 166, 164);
-  border-color: rgb(212, 255, 248);
-  width: 50%;
+  box-shadow: 0px 0px 10px rgb(27, 42, 205);
+  border-color: rgb(11, 11, 11);
+  width: 80%;
   margin: 0 auto;
   margin-top: 2%;
+  font-family: Verdana, Helvetica;
 }
 
 .correcta,
@@ -21,4 +27,46 @@ main {
 
 .erronea {
   background-color: red;
+}
+
+h1 {
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  background-color: rgb(81, 166, 164);
+  color: white;
+  width: 50%;
+  border-radius: 10px;
+}
+footer {
+  display: flex;
+  justify-content: center;
+  text-justify: center;
+  text-align: center;
+}
+#btnStart {
+  background-color: rgb(47, 132, 211);
+  color: white;
+  font-size: 30px;
+  width: 30%;
+  padding: 6%;
+  display: block;
+  margin: 0 auto;
+  justify-content: center;
+  border-radius: 15%;
+  font-family: Verdana, Helvetica;
+  font-weight: bold;
+  text-align: center;
+}
+header {
+  padding-bottom: 50px;
+  padding-top: 50px;
+}
+
+#j-puntos {
+  text-align: center;
+  width: 30%;
+  border-radius: 15%;
+  margin: 0 auto;
+  margin-top: 50px;
 }
