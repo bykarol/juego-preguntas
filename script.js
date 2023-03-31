@@ -63,7 +63,11 @@ const state = {
       setUpFragment.append(this.resultadoRespuesta);
     }
     this.mainElemento.append(setUpFragment);
-    ulElement.addEventListener("click", corregirRespuesta);
+    ulElement.addEventListener("click", (e) => {
+      if (e.target.matches("li")) {
+        corregirRespuesta(e)
+      }
+    });
   },
   resetear() {
     this.index = 0;
