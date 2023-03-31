@@ -79,9 +79,8 @@ const corregirRespuesta = (evento) => {
     } else {
       console.log("Respuesta incorrecta");
       pResultado.classList.add("erronea");
-      pResultado.textContent = `Respuesta incorrecta!!! La respuesta correcta era (${
-        state.arrayPreguntas[state.index].correct
-      })`;
+      pResultado.textContent = `Respuesta incorrecta!!! La respuesta correcta era (${state.arrayPreguntas[state.index].correct
+        })`;
       state.resultadoRespuesta = pResultado;
     }
     state.index += 1;
@@ -91,32 +90,6 @@ const corregirRespuesta = (evento) => {
     }
   }
 }
-
-const start = () => {
-  mezclar();
-  state.setUp();
-}
-
-// const setUp = () => {
-//   const pElement = document.createElement("p")
-//   const ulElement = document.createElement("ul")
-//   const setUpFragment = document.createDocumentFragment();
-
-//   pElement.textContent = state.arrayPreguntas[state.index].question;
-//   setUpFragment.append(pElement)
-//   for (let j = 0; j < state.arrayPreguntas[state.index].answers.length; j++) {
-//     const liElement = document.createElement("li")
-//     liElement.textContent = state.arrayPreguntas[state.index].answers[j]
-//     ulElement.append(liElement)
-//     setUpFragment.append(ulElement)
-
-//   }
-//   state.mainElemento.innerHTML = "";
-//   state.mainElemento.append(setUpFragment)
-// }
-
-window.addEventListener("load", getData);
-state.btnStartElemento.addEventListener("click", start);
 
 const finDelJuego = () => {
   state.mainElemento.innerHTML = "";
@@ -128,13 +101,19 @@ const finDelJuego = () => {
   finFragment.append(buttonElement);
   finFragment.append(elementPuntos);
   state.mainElemento.append(finFragment);
-  buttonElement.addEventListener("click",retorno);
-};
+  buttonElement.addEventListener("click", retorno);
+}
 
 const retorno = () => {
-state.setUp();
-
-
-
-
+  state.setUp();
 }
+
+
+const start = () => {
+  mezclar();
+  state.setUp();
+}
+
+
+window.addEventListener("load", getData);
+state.btnStartElemento.addEventListener("click", start);
