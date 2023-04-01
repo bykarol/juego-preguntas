@@ -19,6 +19,7 @@ main {
 .erronea {
   padding: 5px;
   color: white;
+  text-align: center;
 }
 
 .correcta {
@@ -49,18 +50,18 @@ footer {
   color: white;
   font-size: 30px;
   width: 30%;
-  padding: 6%;
+  padding: 3%;
   display: block;
-  margin: 0 auto;
+  margin: 50px auto;
   justify-content: center;
-  border-radius: 15%;
+  border-radius: 25px;
   font-family: Verdana, Helvetica;
-  font-weight: bold;
-  text-align: center;
 }
 header {
   padding-bottom: 50px;
   padding-top: 50px;
+  -webkit-text-stroke: 1px;
+  -webkit-text-stroke-color: black;
 }
 
 #j-puntos {
@@ -69,4 +70,62 @@ header {
   border-radius: 15%;
   margin: 0 auto;
   margin-top: 50px;
+}
+
+#j-main {
+  margin: 0 auto;
+  text-align: center;
+  -webkit-text-stroke: 1px;
+  font-size: large;
+}
+
+#j-main li {
+  padding: 10px;
+  list-style: none;
+  border: black 3px solid;
+  margin: 15px auto;
+  display: block;
+  border-radius: 10px;
+  border-color: black;
+  width: 80%;
+}
+
+#j-main ul {
+  background-color: rgb(81, 166, 164);
+  padding: 20px;
+}
+
+#j-main p {
+  padding: 10px;
+  border-radius: 10px;
+  border-color: black;
+  border: black 3px solid;
+}
+
+#j-main h3 {
+  background-color: rgb(81, 166, 164);
+  color: white;
+  -webkit-text-stroke: 1px;
+  -webkit-text-stroke-color: black;
+  font-size: x-large;
+}
+
+#j-main p:last-child {
+  padding: 10px;
+  border-radius: 10px;
+  border-color: black;
+  border: black 3px solid;
+}
+
+#j-main button {
+  background-color: rgb(47, 132, 211);
+  color: white;
+  font-size: 30px;
+  width: 30%;
+  padding: 2%;
+  display: block;
+  margin: 50px auto;
+  justify-content: center;
+  border-radius: 20px;
+  font-family: Verdana, Helvetica;
 }
