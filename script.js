@@ -65,7 +65,7 @@ const state = {
     this.mainElemento.append(setUpFragment);
     ulElement.addEventListener("click", (e) => {
       if (e.target.matches("li")) {
-        corregirRespuesta(e)
+        corregirRespuesta(e);
       }
     });
   },
@@ -73,8 +73,7 @@ const state = {
     this.index = 0;
     if (this.arrayPuntajes.length < 5) {
       this.arrayPuntajes.unshift(this.puntos);
-    }
-    else {
+    } else {
       this.arrayPuntajes.shift();
       this.arrayPuntajes.push(this.puntos);
     }
@@ -95,8 +94,9 @@ const corregirRespuesta = (evento) => {
     } else {
       console.log("Respuesta incorrecta");
       pResultado.classList.add("erronea");
-      pResultado.textContent = `Respuesta incorrecta!!! La respuesta correcta era (${state.arrayPreguntas[state.index].correct
-        })`;
+      pResultado.textContent = `Respuesta incorrecta!!! La respuesta correcta era (${
+        state.arrayPreguntas[state.index].correct
+      })`;
       state.resultadoRespuesta = pResultado;
     }
     state.index += 1;
@@ -116,12 +116,14 @@ const finDelJuego = () => {
   const ulPuntajes = document.createElement("ul");
   for (let i = 0; i < state.arrayPuntajes.length; i++) {
     const liPuntaje = document.createElement("li");
-    liPuntaje.textContent = `Partida #${i + 1} - Puntaje final: ${state.arrayPuntajes[i]}`;
+    liPuntaje.textContent = `Partida #${i + 1} - Puntaje final: ${
+      state.arrayPuntajes[i]
+    }`;
     ulPuntajes.append(liPuntaje);
   }
   buttonElement.textContent = "Volver a Jugar";
   elementPuntos.textContent = `Puntaje Final: ${state.puntos}`;
-  h3Element.textContent = "Últimos Puntajes"
+  h3Element.textContent = "Últimos Puntajes";
   finFragment.append(elementPuntos);
   finFragment.append(buttonElement);
   finFragment.append(h3Element);
@@ -136,12 +138,10 @@ const retorno = () => {
   state.setUp();
 }
 
-
 const start = () => {
   mezclar();
   state.setUp();
 }
-
 
 window.addEventListener("load", getData);
 state.btnStartElemento.addEventListener("click", start);
