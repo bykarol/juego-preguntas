@@ -17,11 +17,11 @@ const data = (arrayData) => {
   for (const pregunta of arrayData) {
     state.arrayPreguntas.push(pregunta);
   }
-};
+}
 
 const randomGenerator = (numMax) => {
   return Math.floor(Math.random() * numMax);
-};
+}
 
 const mezclar = () => {
   let arrayMezclado = [];
@@ -32,7 +32,7 @@ const mezclar = () => {
     }
   }
   state.arrayPreguntas = arrayMezclado;
-};
+}
 
 const state = {
   btnStartElemento: document.querySelector("input#btnStart"),
@@ -79,7 +79,7 @@ const state = {
     }
     this.puntos = 0;
   },
-};
+}
 
 const corregirRespuesta = (evento) => {
   const respuestaUsuario = evento.target.textContent;
@@ -105,7 +105,7 @@ const corregirRespuesta = (evento) => {
       finDelJuego();
     }
   }
-};
+}
 
 const finDelJuego = () => {
   state.mainElemento.innerHTML = "";
@@ -130,18 +130,18 @@ const finDelJuego = () => {
   finFragment.append(ulPuntajes);
   state.mainElemento.append(finFragment);
   buttonElement.addEventListener("click", retorno);
-};
+}
 
 const retorno = () => {
   state.resetear();
   mezclar();
   state.setUp();
-};
+}
 
 const start = () => {
   mezclar();
   state.setUp();
-};
+}
 
 window.addEventListener("load", getData);
 state.btnStartElemento.addEventListener("click", start);
