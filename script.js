@@ -39,7 +39,7 @@ const state = {
   headerElemento: document.querySelector("#j-header"),
   mainElemento: document.querySelector("#j-main"),
   playerName: undefined,
-  qtyQuestions: 15,
+  qtyQuestions: 4, //TODO
   index: 0,
   arrayPreguntas: [],
   puntos: 0,
@@ -136,18 +136,19 @@ const finDelJuego = () => {
   const elementPuntos = document.createElement("p");
   const h3Element = document.createElement("h3");
   const ulPuntajes = document.createElement("ul");
+  ulPuntajes.classList.add("rankingList")
   const userName = document.createElement("p");
   userName.textContent = state.playerName;
   for (let i = 0; i < 5; i++) {
     const liPuntaje = document.createElement("li");
     liPuntaje.classList.add("list")
-    liPuntaje.textContent = `#${i + 1} - ${state.playerName} - Final Score: ${state.arrayPuntajes[i]
+    liPuntaje.textContent = `#${i + 1} - ${state.playerName} - Score: ${state.arrayPuntajes[i]
       }`;
     if (state.arrayPuntajes[i] != undefined) {
       ulPuntajes.append(liPuntaje);
     }
   }
-  elementPuntos.textContent = `Your final score: ${state.puntos}`;
+  elementPuntos.textContent = `Your score: ${state.puntos}`;
   buttonElement.textContent = "Play Again";
   h3Element.textContent = "Ranking last scores";
   finSection.append(elementPuntos);
