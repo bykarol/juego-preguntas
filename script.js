@@ -39,7 +39,7 @@ const state = {
   headerElemento: document.querySelector("#j-header"),
   mainElemento: document.querySelector("#j-main"),
   playerName: undefined,
-  qtyQuestions: 4, //TODO
+  qtyQuestions: 15,
   index: 0,
   arrayPreguntas: [],
   puntos: 0,
