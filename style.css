@@ -4,11 +4,14 @@ body {
   font-family: Verdana, Helvetica;
   text-align: center;
   min-width: 250px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 main {
   background: linear-gradient(var(--bg-blue), #1a1231) no-repeat;
-  min-height: 100vh;
+  flex-grow: 1;
   padding: 10px;
 }
 
@@ -28,8 +31,8 @@ footer {
 }
 
 #j-main #j-puntos {
-  text-align: right;
-  margin: 20px 10px;
+  text-align: center;
+  margin: 20px 20px;
   text-transform: uppercase;
   font-weight: bold;
 }
